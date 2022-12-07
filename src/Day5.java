@@ -49,7 +49,7 @@ public class Day5 {
         List<List<Integer>> temp = new ArrayList<>();
         Scanner sc;
         try {
-            File instructionSet = new File("C:\\Users\\65912\\OneDrive - National University of Singapore\\AdventOfCode\\2022\\txtfiles\\Day5\\Day5_instructions.txt");
+            File instructionSet = new File("txtfiles/Day5/Day5_instructions.txt");
             sc = new Scanner(instructionSet);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -69,7 +69,7 @@ public class Day5 {
         for (int i = 0; i < 9; ++i) temp.add(new Stack<>());
         Scanner sc;
         try {
-            File stackSet = new File("C:\\Users\\65912\\OneDrive - National University of Singapore\\AdventOfCode\\2022\\txtfiles\\Day5\\Day5_stack.txt");
+            File stackSet = new File("txtfiles/Day5/Day5_stack.txt");
             sc = new Scanner(stackSet);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

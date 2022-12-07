@@ -47,7 +47,7 @@ public class Day1 {
     public static void main(String[] args) {
         List<Integer> arr = new ArrayList<>();
         try {
-            Scanner sc = new Scanner(new File("C:\\Users\\65912\\OneDrive - National University of Singapore\\AdventOfCode\\2022\\txtfiles\\Day1.txt"));
+            Scanner sc = new Scanner(new File("txtfiles/Day1.txt"));
             while(sc.hasNext()) {
                 String line = sc.nextLine();
                 if (line.equals("")) {

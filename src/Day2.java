@@ -94,7 +94,7 @@ public class Day2 {
         List<String> opponent = new ArrayList<>();
         List<String> self = new ArrayList<>();
         try {
-            Scanner sc = new Scanner(new File("C:\\Users\\65912\\OneDrive - National University of Singapore\\AdventOfCode\\2022\\txtfiles\\Day2.txt"));
+            Scanner sc = new Scanner(new File("txtfiles/Day2.txt"));
             while (sc.hasNext()) {
                 String opp = sc.next();
                 String slf = sc.next();

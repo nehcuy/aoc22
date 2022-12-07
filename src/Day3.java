@@ -72,7 +72,7 @@ public class Day3 {
         List<String> arr = new ArrayList<>();
         Scanner sc;
         try {
-            sc = new Scanner(new File("C:\\Users\\65912\\OneDrive - National University of Singapore\\AdventOfCode\\2022\\txtfiles\\Day3.txt"));
+            sc = new Scanner(new File("txtfiles/Day3.txt"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
