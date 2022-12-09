@@ -19,7 +19,7 @@ public class Day7 {
     private void initialise() {
         Scanner sc;
         try {
-            sc = new Scanner(new File("txtfiles/Day7.txt"));
+            sc = new Scanner(new File("txtfiles/Day7/Day7.txt"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -61,8 +61,60 @@ public class Day7 {
         }
     }
 
+    /**
+     * Returns all directories with size less than limit, including duplicate subdirectories.
+     *
+     * @param startingDir the directory to start from
+     * @param limit the limit
+     * @return all directories with size less than limit
+     */
+    private long getSizeLessThan(Directory startingDir, long limit) {
+        long size = 0;
+        if (startingDir.getSize() < limit) {
+            for (Directory dir : startingDir.children.values()) {
+                size += getSizeLessThan(dir, limit);
+            }
+            size += startingDir.getSize();
+        } else {
+            for (Directory dir : startingDir.children.values()) {
+                size += getSizeLessThan(dir, limit);
+            }
+        }
+        return size;
+    }
+
     public long partOne() {
-        return root.getSizeLessThan(root, 100000);
+        return getSizeLessThan(root, 100000);
+    }
+
+    private long minSpaceToDelete() {
+        return MIN_UNUSED_SPACE - (MAX_DISC_SPACE - root.getSize());
+    }
+
+    /**
+     * Gets the smallest possible directory size minimally needed to be deleted.
+     *
+     * @param startingDir the directory to start from
+     * @param limit the limit
+     * @return size of the smallest directory to be deleted
+     */
+    private long getMinSpaceToDelete(Directory startingDir, long limit) {
+        long size = Long.MAX_VALUE;
+        if (startingDir.getSize() < limit) {
+            for (Directory dir : startingDir.children.values()) {
+                size = Math.min(getMinSpaceToDelete(dir, limit), size);
+            }
+        } else {
+            for (Directory dir : startingDir.children.values()) {
+                size = Math.min(getMinSpaceToDelete(dir, limit), size);
+            }
+            size = Math.min(startingDir.getSize(), size);
+        }
+        return size;
+    }
+
+    public long partTwo() {
+        return getMinSpaceToDelete(root, minSpaceToDelete());
     }
 
     public static void main(String[] args) {
@@ -71,5 +123,7 @@ public class Day7 {
         test.parseCommands();
         // part 1
         System.out.println(test.partOne());
+        // part 2
+        System.out.println(test.partTwo());
     }
 }

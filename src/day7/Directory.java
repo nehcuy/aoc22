@@ -39,28 +39,6 @@ public class Directory {
         return size;
     }
 
-    /**
-     * Returns all directories with size less than limit, including duplicate subdirectories.
-     *
-     * @param startingDir the directory to start from
-     * @param limit the limit
-     * @return all directories with size less than limit
-     */
-    public long getSizeLessThan(Directory startingDir, long limit) {
-        long size = 0;
-        if (startingDir.getSize() < limit) {
-            for (Directory dir : startingDir.children.values()) {
-                size += getSizeLessThan(dir, limit);
-            }
-            size += startingDir.getSize();
-        } else {
-            for (Directory dir : startingDir.children.values()) {
-                size += getSizeLessThan(dir, limit);
-            }
-        }
-        return size;
-    }
-
     @Override
     public String toString() {
         return "[Directory: " + name + ", ParentDir: " + parent.name + "]";
